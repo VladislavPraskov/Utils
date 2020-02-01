@@ -4,7 +4,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import ru.taxcom.mytaxcom.App
 
 
 abstract class BaseViewModel<Action, ViewState, ResultAction>(
@@ -14,12 +13,12 @@ abstract class BaseViewModel<Action, ViewState, ResultAction>(
 
     val context = getApplication<App>()
     /** (3)
-     * Принимает новый action, отправленный из активити, обрабатывает его и возращает resultAction
+     * ГЏГ°ГЁГ­ГЁГ¬Г ГҐГІ Г­Г®ГўГ»Г© action, Г®ГІГЇГ°Г ГўГ«ГҐГ­Г­Г»Г© ГЁГ§ Г ГЄГІГЁГўГЁГІГЁ, Г®ГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГІ ГҐГЈГ® ГЁ ГўГ®Г§Г°Г Г№Г ГҐГІ resultAction
      */
     protected abstract fun handleNewAction(action: Action): LiveData<ResultAction>
 
     /** (4)
-     * Выставляет новое значение internalViewState в зависимости от результата handleNewAction
+     * Г‚Г»Г±ГІГ ГўГ«ГїГҐГІ Г­Г®ГўГ®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ internalViewState Гў Г§Г ГўГЁГ±ГЁГ¬Г®Г±ГІГЁ Г®ГІ Г°ГҐГ§ГіГ«ГјГІГ ГІГ  handleNewAction
      */
     protected abstract fun reduceNewViewState(
         currentViewState: ViewState,
@@ -33,11 +32,11 @@ abstract class BaseViewModel<Action, ViewState, ResultAction>(
         private set
 
     /** (2)
-     * Активити подписана на viewState
-     * После изменения nextAction(1) срабатывает switchMap и вызывается метод handleNewAction
-     * который обрабатывает action оправленный из view. По результатам handleNewAction() возвращается
-     * LiveData с типом Result, после чего срабатывает map() и вызывается reduceNewViewState() который
-     * обновляет значение internalViewState, из-за чего обновляется viewState:LiveDate на который подписана activity
+     * ГЂГЄГІГЁГўГЁГІГЁ ГЇГ®Г¤ГЇГЁГ±Г Г­Г  Г­Г  viewState
+     * ГЏГ®Г±Г«ГҐ ГЁГ§Г¬ГҐГ­ГҐГ­ГЁГї nextAction(1) Г±Г°Г ГЎГ ГІГ»ГўГ ГҐГІ switchMap ГЁ ГўГ»Г§Г»ГўГ ГҐГІГ±Гї Г¬ГҐГІГ®Г¤ handleNewAction
+     * ГЄГ®ГІГ®Г°Г»Г© Г®ГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГІ action Г®ГЇГ°Г ГўГ«ГҐГ­Г­Г»Г© ГЁГ§ view. ГЏГ® Г°ГҐГ§ГіГ«ГјГІГ ГІГ Г¬ handleNewAction() ГўГ®Г§ГўГ°Г Г№Г ГҐГІГ±Гї
+     * LiveData Г± ГІГЁГЇГ®Г¬ Result, ГЇГ®Г±Г«ГҐ Г·ГҐГЈГ® Г±Г°Г ГЎГ ГІГ»ГўГ ГҐГІ map() ГЁ ГўГ»Г§Г»ГўГ ГҐГІГ±Гї reduceNewViewState() ГЄГ®ГІГ®Г°Г»Г©
+     * Г®ГЎГ­Г®ГўГ«ГїГҐГІ Г§Г­Г Г·ГҐГ­ГЁГҐ internalViewState, ГЁГ§-Г§Г  Г·ГҐГЈГ® Г®ГЎГ­Г®ГўГ«ГїГҐГІГ±Гї viewState:LiveDate Г­Г  ГЄГ®ГІГ®Г°Г»Г© ГЇГ®Г¤ГЇГЁГ±Г Г­Г  activity
      */
     init {
         viewState = Transformations.map(Transformations.switchMap(nextAction) { action ->
@@ -50,7 +49,7 @@ abstract class BaseViewModel<Action, ViewState, ResultAction>(
 
 
     /** (1)
-     * view вызывает этот метод на viewModel и передаеёт новое состояние: viewModel.setNextAction(action: Action)
+     * view ГўГ»Г§Г»ГўГ ГҐГІ ГЅГІГ®ГІ Г¬ГҐГІГ®Г¤ Г­Г  viewModel ГЁ ГЇГҐГ°ГҐГ¤Г ГҐВёГІ Г­Г®ГўГ®ГҐ Г±Г®Г±ГІГ®ГїГ­ГЁГҐ: viewModel.setNextAction(action: Action)
      */
     fun setNextAction(action: Action) {
         nextAction.value = action
