@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<template
+    format="4"
+    revision="3"
+    name="BaseViewModel"
+    description="Create abstract class BaseViewModel with MVI support.">
+
+    <category value="Other" />
+
+    <parameter
+        id="baseViewModel"
+        name="Base ViewModel"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="BaseViewModel"
+        help="Create abstract class BaseViewModel with MVI support" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>
+

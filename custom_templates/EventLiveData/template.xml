@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<template
+    format="4"
+    revision="1"
+    name="EventLiveData"
+    description="Create wrapper for data that is exposed via a LiveData that represents an event.">
+
+    <category value="Other"/>
+
+    <parameter
+        id="event"
+        name="Event"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Event"
+    <execute file="recipe.xml.ftl" />
+
+</template>
+

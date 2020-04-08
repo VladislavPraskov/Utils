@@ -1,0 +1,54 @@
+<template format="4"
+        revision="1"
+        name="ViewModel + MVI"
+        description="Creates a ViewModel and generate several class for MVI">
+
+    <category value="Other"/>
+    
+    <parameter
+        id="prefixName"
+        name="Prefix"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the viewModel class" />
+     
+     <parameter
+        id="action"
+        name="Action Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainAction"
+         suggest="${underscoreToCamelCase(classToResource(prefixName))}Action"
+        help="The name of the viewModel class" />
+     
+     <parameter
+        id="resultAction"
+        name="ResultAction Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainResultAction"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ResultAction"
+        help="The name of the viewModel class" />
+     
+     <parameter
+        id="viewState"
+        name="ViewState Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ViewState"
+        default="MainViewState"
+        help="The name of the viewModel class" />
+     
+    <parameter
+        id="viewModelClass"
+        name="ViewModel Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainViewModel"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ViewModel"
+        help="The name of the viewModel class" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>

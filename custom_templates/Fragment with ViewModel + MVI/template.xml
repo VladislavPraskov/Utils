@@ -1,0 +1,72 @@
+<template format="4"
+        revision="1"
+        name="Fragment with ViewModel + MVI"
+        description="Creates a new Fragment with ViewModel and generate several class for MVI">
+
+    <category value="Fragment"/>
+
+    <parameter
+        id="prefixName"
+        name="Prefix"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the viewModel class" />
+    
+    <parameter
+        id="mainFragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainFragment"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}Fragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="mainFragmentLayout"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="main_fragment"
+        suggest="fragment_${classToResource(prefixName)}"
+        help="The name of the layout to create for the fragment" />
+     
+     <parameter
+        id="action"
+        name="Action Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainAction"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}Action"
+        help="The name of the viewModel class" />
+     
+     <parameter
+        id="resultAction"
+        name="ResultAction Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainResultAction"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ResultAction"
+        help="The name of the viewModel class" />
+     
+     <parameter
+        id="viewState"
+        name="ViewState Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ViewState"
+        default="MainViewState"
+        help="The name of the viewModel class" />
+     
+    <parameter
+        id="viewModelClass"
+        name="ViewModel Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainViewModel"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}ViewModel"
+        help="The name of the viewModel class" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>

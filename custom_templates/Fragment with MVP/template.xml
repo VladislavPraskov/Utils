@@ -1,0 +1,63 @@
+<template format="4"
+        revision="1"
+        name="Fragment with MVP"
+        description="Creates a new Fragment with MVP">
+
+    <category value="Fragment"/>
+
+    <parameter
+        id="prefixName"
+        name="Prefix"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Main"
+        help="The name of the Fragment class" />
+    
+    <parameter
+        id="mainFragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainFragment"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}Fragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="mainFragmentLayout"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        default="main_fragment"
+        suggest="fragment_${classToResource(prefixName)}"
+        help="The name of the layout to create for the fragment" />
+     
+     <parameter
+        id="presenter"
+        name="Presenter Name"
+        type="string"
+        constraints="interfase|unique|nonempty"
+        default="MainPresenter"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}Presenter"
+        help="The name of the Presenter interfase" />
+     
+     <parameter
+        id="presenterImpl"
+        name="ResultAction Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainPresenterImpl"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}PresenterImpl"
+        help="The name of the PresenterImpl class" />
+     
+     <parameter
+        id="view"
+        name="View interfase name"
+        type="string"
+        constraints="interfase|unique|nonempty"
+        suggest="${underscoreToCamelCase(classToResource(prefixName))}View"
+        default="MainView"
+        help="The name of the view interfase" />
+
+    <execute file="recipe.xml.ftl" />
+
+</template>
