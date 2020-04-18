@@ -8,9 +8,6 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.${mainFragmentLayout}.*
-<#if applicationPackage??>
-import ${applicationPackage}.R
-</#if>
 
 
 class ${mainFragmentClass}: Fragment(){
