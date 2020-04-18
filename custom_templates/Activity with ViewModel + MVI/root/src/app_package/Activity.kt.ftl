@@ -5,9 +5,6 @@ import androidx.lifecycle.Observer
 import androidx.appcompat.app.AppCompatActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.${mainActivityLayout}.*
-<#if applicationPackage??>
-import ${applicationPackage}.R
-</#if>
 
 
 class ${mainActivityClass}: AppCompatActivity(){
