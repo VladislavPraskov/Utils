@@ -22,12 +22,8 @@ class ${viewModelClass}(app: Application, val interactor: SomeInteractor) : Base
         result: ${resultAction}
     ): ${viewState} {
         return when (result) {
-            is ${resultAction}.SomeAction -> {
-                currentViewState.copy()
-            }
-            is ${resultAction}.Loading -> {
-                currentViewState.copy(isLoading = true)
-            }
+            is ${resultAction}.SomeAction -> currentViewState.copy(isLoading = true)
+            is ${resultAction}.Loading -> currentViewState.copy(isLoading = true)
         }
     }
 }
