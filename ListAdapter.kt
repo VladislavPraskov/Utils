@@ -53,11 +53,7 @@ class ${NAME}(private val click: (Long) -> Unit) :
       differ.submitList(list)
   }
 
- inner class ${ViewHolder_Class}
-  constructor(
-      itemView: View
-  ) : RecyclerView.ViewHolder(itemView){
-
+ inner class ${ViewHolder_Class}(itemView: View) : RecyclerView.ViewHolder(itemView){
       fun bind(item: ${Model_Class}) = with(itemView) {
           itemView.setOnClickListener {
               click.invoke(item)
