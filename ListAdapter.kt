@@ -39,7 +39,7 @@ class ${NAME}(private val click: (Long) -> Unit) :
   override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
       when(holder){
           is ${ViewHolder_Class} -> {
-              holder.bind(differ.currentList.get[position])
+              holder.bind(differ.currentList[position])
           }
       }
   }
